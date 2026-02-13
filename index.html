@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Babyy Starlaa ❤️</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+<style>
+body {
+  margin: 0;
+  font-family: Poppins, sans-serif;
+  background: black;
+  color: white;
+  overflow-x: hidden;
+}
+
+/* FULLSCREEN SLIDESHOW */
+.slideshow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  z-index: -3;
+}
+
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.8);
+}
+
+/* GALAXY STARS */
+.stars {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: url("https://i.imgur.com/YKY28eT.png") repeat;
+  animation: moveStars 120s linear infinite;
+  z-index: -2;
+}
+
+@keyframes moveStars {
+  from {background-position: 0 0;}
+  to {background-position: 10000px 5000px;}
+}
+
+/* CONTAINER */
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 40px 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  padding: 30px;
+  margin: 30px 0;
+  box-shadow: 0 0 20px rgba(255, 0, 100, 0.4);
+}
+
+/* TYPEWRITER */
+#typeText {
+  font-size: 22px;
+  min-height: 40px;
+  margin-bottom: 20px;
+}
+
+/* BUTTONS */
+button {
+  padding: 15px 35px;
+  font-size: 22px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: 0.3s;
+  background: #ff4d6d;
+  color: white;
+}
+button:hover {
+  transform: scale(1.1);
+}
+#noBtn {
+  background: white;
+  color: black;
+  position: absolute;
+}
+
+/* FLOATING HEARTS & ROSES */
+.heart, .rose {
+  position: fixed;
+  animation: float 6s linear infinite;
+}
+@keyframes float {
+  from {transform: translateY(100vh);}
+  to {transform: translateY(-10vh);}
+}
+
+/* LOVE PANEL */
+#lovePanel {
+  position: relative;
+  z-index: 1;
+  max-width: 850px;
+  margin: 40px auto;
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(12px);
+  border-radius: 25px;
+  padding: 30px;
+  text-align: left;
+  color: white;
+}
+
+/* LOVE MESSAGE */
+#loveMsg {
+  font-family: 'Dancing Script';
+  font-size: 70px;
+  color: #ff4d6d;
+  text-shadow: 0 0 30px #ff4d6d, 0 0 50px #ff85b0;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* REASONS */
+#reasonsContainer {
+  height: 250px;
+  overflow-y: auto;
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+}
+
+.reason {
+  padding: 10px;
+  margin: 8px 0;
+  background: rgba(255,255,255,0.15);
+  border-radius: 12px;
+}
+
+.firstDateImg {
+  width: 100%;
+  border-radius: 20px;
+  margin-top: 15px;
+  object-fit: cover;
+}
+</style>
+</head>
+<body>
+
+<!-- SLIDESHOW -->
+<div class="slideshow">
+  <div class="slide"><img src="WhatsApp Image 2026-01-19 at 20.37.49.jpeg" alt="Slide 1"></div>
+  <div class="slide"><img src="WhatsApp Image 2026-02-13 at 20.47.31 (1).jpeg" alt="Slide 2"></div>
+  <div class="slide"><img src="WhatsApp Image 2026-02-13 at 20.47.32.jpeg" alt="Slide 3"></div>
+</div>
+
+<!-- STARS -->
+<div class="stars"></div>
+
+<!-- LOCK SCREEN -->
+<div id="lockScreen" class="container">
+  <h1>🔐 Only For Babyy Starlaa</h1>
+  <p>Enter our daughter's name 🐱❤️</p>
+  <input id="password" placeholder="Type here">
+  <br><br>
+  <button onclick="unlock()">Enter 💖</button>
+</div>
+
+<!-- MAIN CONTENT -->
+<div id="mainContent" style="display:none;" class="container">
+<h1 style="font-family:Dancing Script;font-size:60px;">Babyy Starlaa ❤️</h1>
+<p id="typeText"></p>
+
+<div class="card">
+<h2>Our First Chat 💬</h2>
+<p><b>You:</b> Follow Back Idol:)</p>
+<p><b>Her:</b> ....</p>
+</div>
+
+<div class="card">
+<h2>Our First Date 🌹</h2>
+<p>Grand Hyatt Kuala Lumpur 💕</p>
+<img src="WhatsApp Image 2026-02-13 at 20.47.34.jpeg" alt="Grand Hyatt Kuala Lumpur" class="firstDateImg">
+</div>
+
+<div class="card">
+<h2>We've Been Together For 💖</h2>
+<h1 id="timer"></h1>
+</div>
+
+<div class="card">
+<h2>Catch The Hearts To Unlock Valentine 💖</h2>
+<p>Click 5 hearts</p>
+<h3 id="score">0 / 5</h3>
+<div id="gameArea"></div>
+</div>
+
+<div class="card" id="valentineSection" style="display:none;">
+<h2>Will You Be My First Valentine Baby? 💍</h2>
+<button onclick="yesClicked()">YES MY LOVE</button>
+<button id="noBtn" onmouseover="moveNo()">NOO!</button>
+</div>
+
+<audio autoplay loop>
+<source src="JVKE - her (official lyric video).mp3">
+</audio>
+
+<script>
+/* PASSWORD */
+function unlock(){
+  let pass=document.getElementById("password").value.toLowerCase();
+  if(pass==="hanni"){
+    document.getElementById("lockScreen").style.display="none";
+    document.getElementById("mainContent").style.display="block";
+    typeWriter();
+  } else {alert("Hint: Our daughter 🐱❤️");}
+}
+
+/* TYPEWRITER */
+let message="You are my happiness, my peace, and my forever love ✨";
+let i=0;
+function typeWriter(){
+  if(i<message.length){
+    document.getElementById("typeText").innerHTML+=message.charAt(i);
+    i++;
+    setTimeout(typeWriter,50);
+  }
+}
+
+/* TIMER */
+let startDate=new Date("2025-10-07T22:47:00");
+function updateTimer(){
+  let diff=new Date()-startDate;
+  let days=Math.floor(diff/(1000*60*60*24));
+  let hours=Math.floor((diff/(1000*60*60))%24);
+  let minutes=Math.floor((diff/(1000*60))%60);
+  let seconds=Math.floor((diff/1000)%60);
+  document.getElementById("timer").innerHTML=days+" Days "+hours+" Hours "+minutes+" Minutes "+seconds+" Seconds";
+}
+setInterval(updateTimer,1000);
+
+/* SLIDESHOW */
+let slides=document.querySelectorAll(".slide");
+let index=0;
+function showSlide(){
+  slides.forEach(s=>s.style.opacity=0);
+  slides[index].style.opacity=1;
+  index=(index+1)%slides.length;
+}
+setInterval(showSlide,4000);
+showSlide();
+
+/* MINI GAME */
+let score=0;
+let game=document.getElementById("gameArea");
+function spawnHeart(){
+  let heart=document.createElement("div");
+  heart.innerHTML="💖";
+  heart.style.fontSize="40px";
+  heart.style.cursor="pointer";
+  heart.style.position="relative";
+  heart.style.left=Math.random()*80+"%";
+  heart.onclick=function(){
+    score++;
+    document.getElementById("score").innerHTML=score+" / 5";
+    heart.remove();
+    if(score>=5){document.getElementById("valentineSection").style.display="block";}
+  }
+  game.appendChild(heart);
+  setTimeout(()=>heart.remove(),2000);
+}
+setInterval(spawnHeart,1000);
+
+/* NO BUTTON ESCAPE */
+function moveNo(){
+  let btn=document.getElementById("noBtn");
+  btn.style.top=Math.random()*window.innerHeight+"px";
+  btn.style.left=Math.random()*window.innerWidth+"px";
+}
+
+/* YES CLICK */
+function yesClicked(){
+  document.body.innerHTML=`
+  <div class="slideshow">
+    <div class="slide"><img src="pic1.jpg"></div>
+    <div class="slide"><img src="pic2.jpg"></div>
+    <div class="slide"><img src="pic3.jpg"></div>
+  </div>
+  <div class="stars"></div>
+  <div id="lovePanel">
+    <h1 id="loveMsg"></h1>
+    <div id="valentineLetter">
+      <p> MYY Babyyy Starlaa 💖,</p>
+      <p>Happy Valentine's Day my love! 🤍</p>
+      <p>I still can’t believe we get to celebrate our love today, and I’m so grateful to have you in my life. Sometimes I think about our first date and I smile without realizing. That day stays in my heart because that’s when everything started to feel real. I’m also really glad I sent you that first text… if I didn’t, I wouldn’t have you.</p>
+      <p>Even though we sometimes fight, even though things aren’t always easy, I never regret choosing you. Every argument, every misunderstanding, it just shows how much we care. At the end of the day, you’re still the one I want, the one I choose.Im sorry i couldnt get u anything fancy rn but ill buy u something after you come back from philipines</p>
+      <p>From sharing little moments together to all the adventures in between, you’ve made my life warmer, happier, and fuller. You mean more to me than you probably realize.</p>
+      <p>Thank you for loving me, for staying, and for being you. I hope this Valentine’s Day brings you joy, love, and everything your heart wants. I’ll always be proud of you, and I’ll always love you.</p>
+      <p>Forever yours,Till death sets us appart 💖</p>
+    </div>
+    <div id="reasonsContainer">
+      <h2 style="text-align:center; color:#ff4d6d; font-family:'Dancing Script';">Here are 100 reasons why I chose my Babyy Starlaa ❤️</h2>
+    </div>
+  </div>
+  `;
+
+  // LOVE TYPEWRITER
+  let msg="I LOVE YOU MY CUTIEE BABYY STARLAA ❤️ FOREVER AND ALWAYS 💍";
+  let i=0;
+  let loveMsg=document.getElementById("loveMsg");
+  loveMsg.innerHTML="";
+  function typeWriter(){if(i<msg.length){loveMsg.innerHTML+=msg.charAt(i);i++;setTimeout(typeWriter,100);}}
+  typeWriter();
+
+  // 100 Reasons
+  const reasons=[
+    "You make me smile","You care about me","You support me","You understand me",
+    "You make me feel safe","You make life fun","You are beautiful","You are kind",
+    "You are loving","You are my best friend","You listen to me","You make me laugh",
+    "You motivate me","You comfort me","You accept me","You believe in me",
+    "You inspire me","You brighten my days","You calm my mind","You are adorable",
+    "You give the best hugs","You make my heart happy","You are my peace","You are thoughtful",
+    "You are caring","You are patient","You are strong","You are sweet","You are funny",
+    "You are cute","You are honest","You are loyal","You are supportive","You understand my moods",
+    "You make everything better","You are my sunshine","You are my comfort","You are my partner",
+    "You are my soulmate","You make ordinary days special","You are my dream girl",
+    "You make my heart race","You are my happiness","You make me feel loved",
+    "You trust me","You respect me","You make me proud","You make me stronger","You are amazing",
+    "You are precious","You make me excited for the future","You make me feel lucky",
+    "You are my safe place","You are my joy","You are my love","You are my everything",
+    "You make me want to be better","You make me feel important","You complete me",
+    "You make me laugh at stupid things","You are my favorite person","You always care about me",
+    "You make time for me","You understand my silence","You make me feel special",
+    "You are my forever","You are my reason to smile","You make my world brighter",
+    "You love me for who I am","You make life magical","You are unforgettable","You are perfect to me",
+    "You make my heart melt","You are my home","You make me believe in love","You are my angel",
+    "You are my happiness everyday","You make my heart feel warm","You make me feel alive",
+    "You are my destiny","You are my love story","You are my queen","You are my treasure",
+    "You are my favorite hello","You are my hardest goodbye","You make me excited to wake up",
+    "You make my life meaningful","You are my dream come true","You make everything worth it",
+    "You make me feel complete","You are my forever love","You make me feel loved every second",
+    "You are my world","You are my Babyy Starlaa ❤️"
+  ];
+  let container=document.getElementById("reasonsContainer");
+  reasons.forEach((r,i)=>{
+    let div=document.createElement("div");
+    div.className="reason";
+    div.innerHTML=(i+1)+". "+r;
+    container.appendChild(div);
+  });
+
+  // Floating hearts
+  setInterval(()=>{
+    let heart=document.createElement("div");
+    heart.style.position="fixed";
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.fontSize=Math.random()*30+20+"px";
+    heart.style.top="100vh";
+    heart.style.transition="all 6s linear";
+    heart.innerHTML="❤️";
+    document.body.appendChild(heart);
+    setTimeout(()=>{heart.style.top="-10vh"; setTimeout(()=>heart.remove(),6000);},50);
+  },500);
+
+  // Falling roses
+  setInterval(()=>{
+    let rose=document.createElement("div");
+    rose.innerHTML="🌹";
+    rose.style.position="fixed";
+    rose.style.left=Math.random()*100+"vw";
+    rose.style.fontSize=Math.random()*25+15+"px";
+    rose.style.top="-10vh";
+    rose.style.transition="all 7s linear";
+    document.body.appendChild(rose);
+    setTimeout(()=>{rose.style.top="110vh"; setTimeout(()=>rose.remove(),7000);},50);
+  },700);
+
+  // Slideshow loop
+  let slides=document.querySelectorAll(".slide");
+  let idx=0;
+  function showSlide(){slides.forEach(s=>s.style.opacity=0);slides[idx].style.opacity=1;idx=(idx+1)%slides.length;}
+  setInterval(showSlide,4000);
+  showSlide();
+}
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
